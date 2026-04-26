@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0D9488"/>
+      <stop offset="100%" stop-color="#0F766E"/>
+    </linearGradient>
+  </defs>
+  <!-- Rounded square background -->
+  <rect width="512" height="512" rx="112" fill="url(#bg)"/>
+  <!-- Back bubble (lighter, offset right) -->
+  <rect x="200" y="120" width="210" height="170" rx="28" fill="#FFFFFF" opacity="0.35"/>
+  <polygon points="360,290 390,340 330,290" fill="#FFFFFF" opacity="0.35"/>
+  <!-- Front bubble (solid white) -->
+  <rect x="100" y="170" width="230" height="180" rx="30" fill="#FFFFFF"/>
+  <polygon points="150,350 130,410 200,350" fill="#FFFFFF"/>
+  <!-- Medical cross inside front bubble -->
+  <rect x="190" y="225" width="56" height="16" rx="4" fill="#0D9488"/>
+  <rect x="210" y="205" width="16" height="56" rx="4" fill="#0D9488"/>
+</svg>

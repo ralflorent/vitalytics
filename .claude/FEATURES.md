@@ -1,0 +1,49 @@
+# Feature consideration
+
+Better human experience in capturing health data and processing it through AI for further analyis.
+
+- data entry (chat bot)
+  - ✅ conversational (prompt, planning mode, templatized/preset questions)
+  - ✅ dictation (speech to text)
+  - ✅ paste from clipboard
+  - ✅ attachments (scannable elements: PDF, Photos, text files)
+- Data control
+  - ✅ mask PII (name, email, age, etc.)
+  - ✅ mask some health data
+  - ✅ warning about AI positioning (security/privacy concerns)
+- Data connectors (deferred to v2)
+  - collect data from external sources (API providers)
+  - review process
+- chat history
+  - ✅ local storage (IndexedDB via Dexie)
+  - ✅ temporary chat (session-only, auto-delete on close)
+  - ✅ categorize conversations (tags via sidebar ellipsis menu)
+  - ✅ rename conversations (inline edit + AI-generated titles)
+- AI engine support
+  - ✅ Provider (Gemini, Anthropic, OpenAI)
+  - ✅ AI models based on provider (fast/standard/reasoning tiers)
+  - ✅ Streaming responses (all three providers)
+  - ✅ Agentic mode (auto-escalate from fast to reasoning — "Auto" option in model selector)
+- data output (analysis)
+  - ✅ export conversation as markdown, json, text
+  - export as PDF (deferred to v2 — jsPDF or @react-pdf/renderer)
+  - ✅ copy to clipboard
+  - ✅ share via email, whatsapp (mailto: and wa.me deep links)
+- workflow (for transparency)
+  - ✅ keep log of all api calls/responses made to AI engine
+  - ✅ export plan / workflow view (visual API call log per conversation)
+  - ✅ token usage dashboard (global, across all conversations)
+- user profile / onboarding
+  - ✅ onboarding wizard (3-step: nickname, background, interests — all skippable)
+  - ✅ profile shapes AI system prompt (background-appropriate language, nickname addressing, interests)
+  - ✅ profile editable anytime via Settings → Profile section
+- settings
+  - ✅ help on app usage (FirstRunDisclaimer + About/Terms of Use modal)
+  - ✅ appearance (dark/light/system theme)
+  - ✅ credential management (bring your own keys)
+  - ✅ AI provider selection / model selection
+  - ✅ enable review process before submission (data control)
+  - ✅ browser notifications (Notification API for background responses)
+  - ✅ voice: conversation style / tone / detail level
+  - ✅ clean up chats (Clear all; archive dropped — export transcripts instead)
+  - ✅ export data (full IndexedDB JSON export)
