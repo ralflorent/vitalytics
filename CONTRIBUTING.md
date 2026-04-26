@@ -6,12 +6,15 @@ Thank you for your interest in contributing! This guide will help you get starte
 
 1. Fork the repository
 2. Clone your fork and set up the dev environment:
+
    ```bash
    nvm use
    yarn install
    yarn dev
    ```
+
 3. Create a feature branch off `dev`:
+
    ```bash
    git checkout dev
    git checkout -b feat/your-feature
@@ -48,6 +51,7 @@ yarn test
 ```
 
 When adding new features, include tests where practical, especially for:
+
 - Utility functions and hooks
 - Data layer operations (db, providers)
 
