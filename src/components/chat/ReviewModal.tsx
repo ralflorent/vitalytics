@@ -1,5 +1,5 @@
-import React from 'react';
-import { Modal, Tag, Space } from 'antd';
+import React, { useState } from 'react';
+import { Modal, Tag, Space, Input } from 'antd';
 import { EyeOutlined } from '@ant-design/icons';
 import styled from 'styled-components';
 
@@ -7,14 +7,32 @@ interface Props {
   open: boolean;
   originalText: string;
   maskedText: string;
+  maskingLevel: string;
   provider: string;
   model: string;
-  onConfirm: () => void;
+  onConfirm: (textToSend: string) => void;
   onCancel: () => void;
 }
 
-const ReviewModal = ({ open, originalText, maskedText, provider, model, onConfirm, onCancel }: Props) => {
+const ReviewModal = ({
+  open,
+  originalText,
+  maskedText,
+  maskingLevel,
+  provider,
+  model,
+  onConfirm,
+  onCancel,
+}: Props) => {
+  const [draft, setDraft] = useState(maskedText);
   const hasChanges = originalText !== maskedText;
+  const trimmed = draft.trim();
+  const canContinue = trimmed.length > 0;
+
+  const handleOk = () => {
+    if (!canContinue) return;
+    onConfirm(trimmed);
+  };
 
   return (
     <Modal
@@ -24,10 +42,11 @@ const ReviewModal = ({ open, originalText, maskedText, provider, model, onConfir
         </TitleRow>
       }
       open={open}
-      onOk={onConfirm}
+      onOk={handleOk}
       onCancel={onCancel}
       okText="Continue"
       cancelText="Cancel"
+      okButtonProps={{ disabled: !canContinue }}
       width={560}
     >
       <MetaRow>
@@ -45,14 +64,22 @@ const ReviewModal = ({ open, originalText, maskedText, provider, model, onConfir
       )}
 
       <Section>
-        <Label>{hasChanges ? 'After PII masking (this will be sent)' : 'Text to send'}</Label>
-        <TextBlock>{maskedText}</TextBlock>
+        <Label>{hasChanges ? 'After PII masking (edit before sending)' : 'Text to send'}</Label>
+        <OutgoingTextArea
+          value={draft}
+          onChange={(e) => setDraft(e.target.value)}
+          autoSize={{ minRows: 4, maxRows: 12 }}
+        />
+        {maskingLevel !== 'none' && (
+          <RemaskingHint>
+            Continue applies PII masking again to anything you type or paste here.
+          </RemaskingHint>
+        )}
       </Section>
 
       {hasChanges && (
         <MaskingNote>
-          PII redaction was applied. Review the masked text above to ensure no sensitive information remains before
-          sending.
+          PII redaction was applied. Review and edit the text above to ensure nothing sensitive remains before sending.
         </MaskingNote>
       )}
     </Modal>
@@ -95,6 +122,29 @@ const TextBlock = styled.pre<{ $muted?: boolean }>`
   overflow-y: auto;
   color: ${(p) => (p.$muted ? 'var(--color-text-muted)' : 'var(--color-text)')};
   ${(p) => p.$muted && 'text-decoration: line-through;'}
+`;
+
+const OutgoingTextArea = styled(Input.TextArea)`
+  && textarea {
+    min-height: 120px;
+    max-height: 200px;
+    overflow-y: auto;
+    font-size: 13px;
+    line-height: 1.5;
+    background: var(--color-primary-surface);
+    color: var(--color-text);
+    border-color: var(--color-bubble-user-border);
+    border-radius: 8px;
+    padding: 12px;
+    resize: vertical;
+  }
+`;
+
+const RemaskingHint = styled.div`
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--color-text-muted);
+  line-height: 1.4;
 `;
 
 const MaskingNote = styled.div`

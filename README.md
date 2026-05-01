@@ -1,5 +1,7 @@
 # Vitalytics
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/f46ebaa4-5a2a-42d4-821e-2cfc63ce5de7/deploy-status)](https://app.netlify.com/projects/namefully/deploys)
+
 AI-powered health data analysis PWA. Upload or input medical documents (PDFs, images, text) and get AI-driven explanations through a conversational chat interface.
 
 **Browser-only architecture** — all processing happens client-side. No backend. Users bring their own API keys (BYOK). Deployed as a static site on Netlify.

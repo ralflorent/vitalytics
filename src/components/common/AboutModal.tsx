@@ -124,8 +124,8 @@ const AboutModal = ({ open, onClose }: Props) => (
           GitHub
         </DevLink>
         <DevDot>&middot;</DevDot>
-        <DevLink href="https://ralflorent.com" target="_blank" rel="noopener noreferrer">
-          Website
+        <DevLink href="https://medium.com/@ralflorent/the-story-behind-vitalytics-f37721d029b1" target="_blank" rel="noopener noreferrer">
+          Story
         </DevLink>
       </DevLinks>
       <BuildInfo>

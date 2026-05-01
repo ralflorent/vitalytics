@@ -358,7 +358,7 @@ const Footer = styled.footer`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 8px 16px;
+  padding: 8px 16px 10px 16px;
   min-height: 36px;
   background: var(--color-bg);
   gap: 2px;
@@ -385,13 +385,13 @@ const FooterBottom = styled.div`
 `;
 
 const Copyright = styled.span`
-  font-size: 10px;
+  font-size: 11px;
   color: var(--color-text-muted);
   opacity: 0.7;
 `;
 
 const FooterDot = styled.span`
-  font-size: 10px;
+  font-size: 11px;
   color: var(--color-text-muted);
   opacity: 0.5;
 `;
@@ -401,7 +401,7 @@ const FooterLink = styled.button`
   border: none;
   padding: 0;
   color: var(--color-primary);
-  font-size: 10px;
+  font-size: 11px;
   cursor: pointer;
   font-family: inherit;
   opacity: 0.8;

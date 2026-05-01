@@ -122,8 +122,9 @@ const ChatView = ({
   const [statsKey, setStatsKey] = useState(0);
   const [workflowOpen, setWorkflowOpen] = useState(false);
 
-  // Review modal state
+  // Review modal state (session id remounts ReviewModal so draft resets each open)
   const [reviewOpen, setReviewOpen] = useState(false);
+  const [reviewSessionId, setReviewSessionId] = useState(0);
   const [pendingOriginal, setPendingOriginal] = useState('');
   const [pendingMasked, setPendingMasked] = useState('');
 
@@ -378,15 +379,18 @@ const ChatView = ({
     if (reviewBeforeSend) {
       setPendingOriginal(combined);
       setPendingMasked(masked);
+      setReviewSessionId((n) => n + 1);
       setReviewOpen(true);
     } else {
       processAndSend(masked);
     }
   };
 
-  const handleReviewConfirm = () => {
+  const handleReviewConfirm = (edited: string) => {
+    const trimmed = edited.trim();
+    if (!trimmed) return;
     setReviewOpen(false);
-    processAndSend(pendingMasked);
+    processAndSend(applyMasking(trimmed, maskingLevel));
   };
 
   const currentProvider = getProvider(providerId);
@@ -416,9 +420,11 @@ const ChatView = ({
           />
         </CenteredLayout>
         <ReviewModal
+          key={reviewSessionId}
           open={reviewOpen}
           originalText={pendingOriginal}
           maskedText={pendingMasked}
+          maskingLevel={maskingLevel}
           provider={currentProvider?.name || providerId}
           model={modelId}
           onConfirm={handleReviewConfirm}
@@ -463,9 +469,11 @@ const ChatView = ({
         <ChatInput onSend={handleSend} disabled={sending} placeholder="Ask a follow-up question..." />
       </BottomInputArea>
       <ReviewModal
+        key={reviewSessionId}
         open={reviewOpen}
         originalText={pendingOriginal}
         maskedText={pendingMasked}
+        maskingLevel={maskingLevel}
         provider={currentProvider?.name || providerId}
         model={modelId}
         onConfirm={handleReviewConfirm}
