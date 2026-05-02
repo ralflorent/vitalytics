@@ -329,10 +329,14 @@ const Spacer = styled.div`
 
 const ProviderBadge = styled.span`
   font-size: 12px;
-  color: var(--color-text-muted);
-  padding: 3px 8px;
-  background: var(--color-surface-elevated);
-  border-radius: 4px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--color-accent-badge-text);
+  padding: 4px 10px;
+  background: var(--color-accent-badge-bg);
+  border: 1px solid var(--color-accent-badge-border);
+  border-radius: 6px;
+  white-space: nowrap;
 
   @media (max-width: 480px) {
     display: none;
@@ -358,7 +362,7 @@ const Footer = styled.footer`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 8px 16px;
+  padding: 8px 16px 10px 16px;
   min-height: 36px;
   background: var(--color-bg);
   gap: 2px;
@@ -385,13 +389,13 @@ const FooterBottom = styled.div`
 `;
 
 const Copyright = styled.span`
-  font-size: 10px;
+  font-size: 11px;
   color: var(--color-text-muted);
   opacity: 0.7;
 `;
 
 const FooterDot = styled.span`
-  font-size: 10px;
+  font-size: 11px;
   color: var(--color-text-muted);
   opacity: 0.5;
 `;
@@ -401,7 +405,7 @@ const FooterLink = styled.button`
   border: none;
   padding: 0;
   color: var(--color-primary);
-  font-size: 10px;
+  font-size: 11px;
   cursor: pointer;
   font-family: inherit;
   opacity: 0.8;
