@@ -28,6 +28,10 @@ body {
   --color-text-secondary: #64748B;
   --color-text-muted: #94A3B8;
   --color-accent: #F59E0B;
+  /* Header provider/model chip — warm secondary, readable on light bg */
+  --color-accent-badge-bg: #fffbeb;
+  --color-accent-badge-text: #b45309;
+  --color-accent-badge-border: #fde68a;
   --color-error: #EF4444;
   --color-success: #10B981;
   --color-bubble-user: #F0FDFA;
@@ -48,8 +52,11 @@ body {
   --color-text: #F1F5F9;
   --color-text-secondary: #94A3B8;
   --color-text-muted: #64748B;
-  --color-accent: #FBBF24;
-  --color-error: #F87171;
+  --color-accent: #fbbf24;
+  --color-accent-badge-bg: rgba(251, 191, 36, 0.14);
+  --color-accent-badge-text: #fcd34d;
+  --color-accent-badge-border: rgba(251, 191, 36, 0.38);
+  --color-error: #f87171;
   --color-success: #34D399;
   --color-bubble-user: #115E59;
   --color-bubble-user-border: #0F766E;
